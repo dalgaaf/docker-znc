@@ -1,13 +1,12 @@
-# version 1.6.1-2
-# docker-version 1.11.1
-FROM ubuntu:15.04
-MAINTAINER Jim Myhrberg "contact@jimeh.me"
+# version 1.6.4
+# docker-version 1.11.2
+FROM alpine:3.5
+MAINTAINER Danny Al-Gaaf "danny.al-gaaf@bisect.de"
 
-ENV ZNC_VERSION 1.6.1
+ENV ZNC_VERSION 1.6.4
 
-RUN apt-get update \
-    && apt-get install -y sudo wget build-essential libssl-dev libperl-dev \
-               pkg-config swig3.0 libicu-dev ca-certificates \
+RUN apk add --no-cache sudo bash autoconf automake gettext-dev make g++ \
+        openssl-dev pkgconfig perl-dev swig zlib-dev ca-certificates \
     && mkdir -p /src \
     && cd /src \
     && wget "http://znc.in/releases/archive/znc-${ZNC_VERSION}.tar.gz" \
@@ -16,12 +15,10 @@ RUN apt-get update \
     && ./configure --disable-ipv6 \
     && make \
     && make install \
-    && apt-get remove -y wget \
-    && apt-get autoremove -y \
-    && apt-get clean \
-    && rm -rf /src* /var/lib/apt/lists/* /tmp/* /var/tmp/*
+    && rm -rf /src /var/cache/apk/*
 
-RUN useradd znc
+RUN adduser -S znc
+RUN addgroup -S znc
 ADD docker-entrypoint.sh /entrypoint.sh
 ADD znc.conf.default /znc.conf.default
 RUN chmod 644 /znc.conf.default
