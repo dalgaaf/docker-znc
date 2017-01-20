@@ -1,6 +1,6 @@
-# version 1.6.1-2
-# docker-version 1.11.1
-FROM ubuntu:16.10
+# version 1.6.4-1
+# docker-version 1.11.2
+FROM debian:sid
 MAINTAINER Danny Al-Gaaf "danny.al-gaaf@bisect.de"
 
 RUN apt-get update \
