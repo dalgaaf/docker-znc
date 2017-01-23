@@ -2,7 +2,7 @@
 FROM alpine:edge
 MAINTAINER Danny Al-Gaaf "danny.al-gaaf@bisect.de"
 
-RUN apk add --no-cache --update 
+RUN apk add --no-cache --update \
 	sudo \
 	bash \
 	ca-certificates \
