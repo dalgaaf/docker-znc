@@ -15,7 +15,7 @@ RUN apk add --no-cache --update \
     && rm -rf /var/cache/apk/*
 
 # RUN adduser -S znc
-RUN addgroup -S znc
+# RUN addgroup -S znc
 ADD docker-entrypoint.sh /entrypoint.sh
 ADD znc.conf.default /znc.conf.default
 RUN chmod 644 /znc.conf.default
