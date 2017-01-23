@@ -1,21 +1,18 @@
-# version 1.6.4
 # docker-version 1.11.2
-FROM alpine:3.5
+FROM alpine:edge
 MAINTAINER Danny Al-Gaaf "danny.al-gaaf@bisect.de"
 
-ENV ZNC_VERSION 1.6.4
-
-RUN apk add --no-cache sudo bash autoconf automake gettext-dev make g++ \
-        openssl-dev pkgconfig perl-dev swig zlib-dev ca-certificates \
-    && mkdir -p /src \
-    && cd /src \
-    && wget "http://znc.in/releases/archive/znc-${ZNC_VERSION}.tar.gz" \
-    && tar -zxf "znc-${ZNC_VERSION}.tar.gz" \
-    && cd "znc-${ZNC_VERSION}" \
-    && ./configure --disable-ipv6 \
-    && make \
-    && make install \
-    && rm -rf /src /var/cache/apk/*
+RUN apk add --no-cache --update 
+	sudo \
+	bash \
+	ca-certificates \
+	znc \
+	znc-dev \
+	znc-doc \
+	znc-extra \
+	znc-modpython \
+	znc-modperl \
+    && rm -rf /var/cache/apk/*
 
 RUN adduser -S znc
 RUN addgroup -S znc
