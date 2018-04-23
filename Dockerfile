@@ -1,9 +1,9 @@
-# version 1.6.4
+# version 1.6.6
 # docker-version 1.11.2
 FROM alpine:3.6
 MAINTAINER Danny Al-Gaaf "danny.al-gaaf@bisect.de"
 
-ENV ZNC_VERSION 1.6.4
+ENV ZNC_VERSION 1.6.6
 
 RUN apk add --no-cache sudo bash autoconf automake gettext-dev make g++ \
         openssl-dev pkgconfig perl-dev swig zlib-dev ca-certificates \
