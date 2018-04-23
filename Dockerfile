@@ -1,6 +1,6 @@
 # version 1.6.4
 # docker-version 1.11.2
-FROM alpine:3.5
+FROM alpine:3.6
 MAINTAINER Danny Al-Gaaf "danny.al-gaaf@bisect.de"
 
 ENV ZNC_VERSION 1.6.4
